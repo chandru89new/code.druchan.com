@@ -1,0 +1,36 @@
+{
+  "type": "module",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "yarn spago run -m Main",
+    "watch": "yarn nodemon",
+    "deploy": "firebase deploy",
+    "clean": "rm cache && rm -rf public",
+    "clean-build": "yarn clean && yarn build"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.1",
+    "nodemon": "^2.0.22",
+    "purescript": "0.15.9",
+    "purty": "^7.0.0",
+    "spago": "0.21.0",
+    "tailwindcss": "^3.3.2",
+    "turndown": "^7.1.2"
+  },
+  "nodemonConfig": {
+    "exec": "yarn spago run -m Main",
+    "ext": "purs css html yml md",
+    "watch": [
+      "./src",
+      "./templates",
+      "./contents",
+      "./tailwind.config.js"
+    ],
+    "ignore": [
+      "./tmp"
+    ]
+  }
+}

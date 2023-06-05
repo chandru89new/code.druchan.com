@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}} — code/druchan</title>
+  <link href="./style.css" rel="stylesheet" />
+  <link href="./images/favicon.png" rel="icon" />
+  <script src="js/highlight.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <h3 id="logo">
+      <a href="/">
+        &larr; code/druchan
+      </a>
+    </h3>
+    <header>
+      <h1>{{title}}</h1>
+      <div class="date">{{date}}</div>
+    </header>
+    <article>{{content}}</article>
+    <footer>
+      <a href="/">&larr; blog</a>
+      <span>&bull;</span>
+      <a href="/feed.xml">rss feed</a>
+      <span>&bull;</span>
+      <a href="https://druchan.com">druchan.com</a>
+    </footer>
+  </div>
+  <script>hljs.highlightAll();</script>
+</body>
+
+</html>
