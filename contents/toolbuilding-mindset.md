@@ -1,7 +1,7 @@
 ---
 title: "A tool-building mindset"
 slug: toolbuilding-mindset
-date: 2023-05-17
+date: 2022-12-17
 ---
 
 Everyone uses tools to build things.

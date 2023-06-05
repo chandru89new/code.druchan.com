@@ -44,11 +44,11 @@ article {
 }
 
 header {
-  @apply mt-3 mb-4 pb-4 border-b
+  @apply mt-3 mb-4 pb-4 border-b border-slate-600
 }
 
 footer {
-  @apply text-sm sm:text-base pt-4 mt-4 mb-10 border-t flex gap-x-3
+  @apply text-sm sm:text-base pt-4 mt-4 mb-10 border-t flex gap-x-3 border-slate-600
 }
 
 section h3 {
@@ -94,5 +94,9 @@ article#archive_container ul {
 }
 
 blockquote {
-  @apply border-l-4 border-slate-200 pl-4 space-y-4 text-slate-500
+  @apply border-l-4 border-slate-500 pl-4 space-y-4 text-slate-500
+}
+
+hr {
+  @apply border-slate-600
 }

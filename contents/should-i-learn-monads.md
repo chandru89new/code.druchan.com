@@ -1,10 +1,12 @@
 ---
 title: "'Should I Learn Monads?'"
-date: 2023-05-17
+date: 2021-12-06
 slug: should-i-learn-monads
 ---
 
-Someone asked about this on reddit today and I wanted to think about this a bit.
+Someone asked about this
+[on reddit](https://www.reddit.com/r/functionalprogramming/comments/r9r7gf/should_i_learn_about_monads/)
+today and I wanted to think about this a bit.
 
 - This is written (or thought) from the perspective of a JS developer who
   discovered functional programming as recently as 2019 and has used monads.
