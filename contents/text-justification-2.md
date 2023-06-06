@@ -1,5 +1,5 @@
 ---
-title: "Justifying a paragraph of text — Part 2"
+title: "Justifying a paragraph of text: Part 2"
 date: 2023-06-07
 slug: text-justify-2
 ignore: true

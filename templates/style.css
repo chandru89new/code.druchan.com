@@ -24,7 +24,7 @@ ul {
 }
 
 h1 {
-  @apply tracking-tighter text-3xl mt-6
+  @apply tracking-tighter text-xl mt-6
 }
 
 #logo, #logo a {

@@ -1,8 +1,8 @@
 ---
-title: "Justifying a paragraph of text — Part 1"
+title: "Justifying a paragraph of text: Part 1"
 date: 2023-06-06
 slug: text-justify
-ignore: true
+# ignore: true
 ---
 
 Following-up on the [leetcode stuff I was doing recently](/int-to-roman), I
