@@ -70,12 +70,9 @@ generatePostsHTML fds = do
 replaceContentInTemplate :: Template -> FormattedMarkdownData -> String
 replaceContentInTemplate (Template template) pd =
   replaceAll (Pattern "{{title}}") (Replacement $ "<a href=\"./" <> pd.frontMatter.slug <> "\">" <> pd.frontMatter.title <> "</a>") template
-    # replaceAll (Pattern "{{content}}") (Replacement $ augmentATags pd.content)
+    # replaceAll (Pattern "{{content}}") (Replacement $ pd.content)
     # replaceAll (Pattern "{{date}}") (Replacement $ formatDate "MMM DD, YYYY" pd.frontMatter.date)
     # replaceAll (Pattern "{{page_title}}") (Replacement pd.frontMatter.title)
-  where
-  augmentATags :: String -> String
-  augmentATags = replaceAll (Pattern "<a ") (Replacement "<a target='_blank' ")
 
 readPostTemplate :: ExceptT Error Aff String
 readPostTemplate = ExceptT $ try $ readTextFile UTF8 blogpostTemplate
