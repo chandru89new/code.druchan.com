@@ -2,7 +2,7 @@
 title: "Another Leetcode episode in Purescript"
 date: 2023-06-09
 slug: max-stock-profit-leetcode
-ignore: true
+# ignore: true
 ---
 
 Lately, I've been enjoying solving some Leetcode problems [as][leet1]
@@ -467,3 +467,5 @@ The [full source-code can be found here][source-code].
 [leet4]: /int-to-roman
 [leet-source]:
   https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+[source-code]:
+  https://github.com/chandru89new/leetcode-stuff/blob/main/src/StockProfits.purs

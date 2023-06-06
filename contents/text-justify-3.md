@@ -2,7 +2,7 @@
 title: "Justifying a paragraph of text: Part 3"
 date: 2023-06-08
 slug: text-justify-3
-ignore: true
+# ignore: true
 ---
 
 Read [part one here](/text-justify). Read [part two here](/text-justify-2).
