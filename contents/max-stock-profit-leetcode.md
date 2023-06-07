@@ -83,7 +83,7 @@ arrayToStockDay xs = sortStockDay $ go xs 1 []
       Nothing -> acc
 ```
 
-(I will cover the `SortedArray` bit shortly; for now, treat it just as a wrapped
+(I will cover the `SortedArray` bit shortly; for now, treat it just as a wrapper
 around an `Array`)
 
 This data structure lets me do an important thing: find all possible valid
@@ -446,6 +446,9 @@ totalProfits = findBestCandidate >>> map profitFromBestCandidate >>> fromMaybe 0
 And as a test:
 
 ```bash
+> totalProfits [3,1,0,0,5,4,1,3]
+7
+
 > totalProfits [3,1,0,0,5,4,1]
 5
 

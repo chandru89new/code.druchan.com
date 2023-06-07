@@ -138,3 +138,5 @@ And the script continues to run just fine:
 > totalProfits [3,1,0,0,1,2,3]
 3
 ```
+
+[Updated source-code here](https://github.com/chandru89new/leetcode-stuff/tree/main/src/StockProfits.purs).
