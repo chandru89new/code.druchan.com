@@ -461,6 +461,9 @@ And as a test:
 
 The [full source-code can be found here][source-code].
 
+_Update_: I [wrote some notes on refactoring small bits of the code][refactor]
+to use a custom `Typeclass` to define what's a "valid trade".
+
 [leet1]: /text-justify
 [leet2]: /text-justify-2
 [leet3]: /text-justify-3
@@ -468,4 +471,5 @@ The [full source-code can be found here][source-code].
 [leet-source]:
   https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 [source-code]:
-  https://github.com/chandru89new/leetcode-stuff/blob/main/src/StockProfits.purs
+  https://github.com/chandru89new/leetcode-stuff/blob/1ce02699f8f8295378291ab0a6f9001ae902fc41/src/StockProfits.purs
+[refactor]: /max-stock-profit-leetcode-typeclass
