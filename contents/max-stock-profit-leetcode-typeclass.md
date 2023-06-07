@@ -11,10 +11,11 @@ some valid trades.
 Two data structures specifically had this notion associated with them:
 
 ```haskell
-type Day = Int
-type Price = Int
-type StockDay = Tuple Price Day
+-- type Day = Int
+-- type Price = Int
 
+type StockDay = Tuple Price Day
+-- and
 data BuySell = BuySell StockDay StockDay
 ```
 
@@ -100,7 +101,7 @@ instance ValidTrade StockDay where
 I also added an `infix` to help make the code a little succinct:
 
 ```haskell
-infixr 1 validTrade as ??
+infix 1 validTrade as ??
 ```
 
 Now, I could get rid of the `isValidTradeDayOrder` function in totality and
