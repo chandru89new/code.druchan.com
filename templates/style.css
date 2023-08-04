@@ -27,6 +27,10 @@ h1 {
   @apply text-xl leading-relaxed
 }
 
+h3 {
+  @apply font-bold
+}
+
 #logo, #logo a {
   @apply text-slate-400;
 }
