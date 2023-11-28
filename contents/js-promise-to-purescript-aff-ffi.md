@@ -32,7 +32,7 @@ In both the `makeAff` and `EffectFnAff` cases, I was able to get the code to com
 
 Turns out JS's `execSync`, even when converted into a promise on the JS side and then imported into an `Aff` on Purescript via `EffectFnAff` will continue to block. (That or the way I wrote it was blocking).
 
-Finally, I stumbled on `aff-promise` through [this post](https://blog.drewolson.org/purescript-async-ffi) and discovered a very simple way to convert Node's `execSync` into a Purescript `Aff`:
+Finally, I stumbled on `aff-promise` through [this post](https://blog.drewolson.org/purescript-async-ffi) and discovered a very simple way to convert Node's `exec` into a Purescript `Aff`:
 
 On the JS side, you have this:
 
