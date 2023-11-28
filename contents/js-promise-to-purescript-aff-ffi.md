@@ -78,4 +78,4 @@ which is essentially:
 
 I must've spent as much time on finding a way to convert `execSync` into an `Aff` as I did writing the entire program, but c'est la vie.
 
-I hope to move to the query extraction part – where you point a folder and the program extracts all queries it finds in the markdown or config files – in the next iteration.
+I hope to move to the query extraction part – where you point the script to a folder and the program extracts all queries it finds in the markdown or config files – in the next iteration.
