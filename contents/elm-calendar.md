@@ -12,7 +12,6 @@ Here's the final output I aimed for:
 
 ![final output example](https://github.com/chandru89new/elm-simple-calendar/blob/main/screens/final_out_example.png?raw=true)
 
-
 I started by thinking about the lowest unit: the month.
 
 **Given a month (and a year), can I get this?**
@@ -21,15 +20,15 @@ I started by thinking about the lowest unit: the month.
 
 My first idea was to do this:
 
-- get all dates in a given month-year. 
+- get all dates in a given month-year.
 - get some padding for the first week and padding for the last week so that I can fill them with empty blocks (this depends on when the week starts)
 - pass this data to a rendering function!
 
-The type of data we choose should be good enough to make it possible to render it easily. 
+The type of data we choose should be good enough to make it possible to render it easily.
 
-So, in our case, we're rendering dates. Lists of dates. 
+So, in our case, we're rendering dates. Lists of dates.
 
-And because we're rendering "rows" of dates, each row is a week of dates. 
+And because we're rendering "rows" of dates, each row is a week of dates.
 
 So the data structure I'm going for is this:
 
@@ -162,8 +161,8 @@ This time, it's not as straight-forward.
 Take 31st July 2023 and Sunday (for start of week) as an example:
 
 - 31st July 2023 is a Monday
-- The next closest Sunday is 6th August 2023. 
-- But we don't need a "Sunday". We need the next closest "Saturday". 
+- The next closest Sunday is 6th August 2023.
+- But we don't need a "Sunday". We need the next closest "Saturday".
 - At first, I thought "hey we could compute the actual end of week day from the given start-of-week day" but that's a lot of code. Instead, we can just get the next-closest Sunday and then reduce 1 day!
 
 And here's that logic:
@@ -286,8 +285,9 @@ viewMonth weeks =
 
 And of course, we need to render the week header as well which lists the weekdays.
 
-To do this, I'm going to be a bit hacky: 
-- We already have a list of weeks in `List Week`. 
+To do this, I'm going to be a bit hacky:
+
+- We already have a list of weeks in `List Week`.
 - We can take the "first" element of this list and
 - format each date in the list to just extract the weekday
 - and use the resulting list to render the week header!
@@ -316,12 +316,11 @@ view _ =
         ]
 ```
 
-
 Here's what it renders as:
 
 ![month render ugly](https://github.com/chandru89new/elm-simple-calendar/blob/main/screens/month_render_initial.png?raw=true)
 
-**It's ugly, shows dates from the previous/next months and there's so much room for improvement.** 
+**It's ugly, shows dates from the previous/next months and there's so much room for improvement.**
 
 But we've got the basics right and that's good enough to boot.
 
@@ -329,7 +328,7 @@ The first order of business now is to **not show dates which are not part of the
 
 In the example above, that's 25th - 30th (June) and 1st - 5th (August).
 
-What we have is a long list of dates. We need to somehow *know* if a date in the list is part of the current month (eg July) or not. 
+What we have is a long list of dates. We need to somehow _know_ if a date in the list is part of the current month (eg July) or not.
 
 Let's think in terms of the type:
 
@@ -405,10 +404,7 @@ This gets us to here:
 
 Each row is it's own "grid", instead of the whole month being a grid. (And the week header is also it's own "grid").
 
-
 ![too many divs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o0dn9mcoordfj14sgki9.png)
-
-
 
 We can fix this.
 
@@ -428,6 +424,7 @@ We want a structure like this:
 ```
 
 We can do this in two steps:
+
 1. first, we'll write one generic container `viewBox` which wraps all its children in the grid
 2. then, we'll ensure all our viewMonth/viewWeek functions return a list of `div`s that we can just render inside the `viewBox`
 
@@ -464,6 +461,7 @@ viewWeekHeader week =
 ```
 
 In the `viewMonth` function, we use the `List.concatMap` function because:
+
 - viewMonth is a list.map over weeks using the `viewWeek` function
 - the `viewWeek` function returns a list
 - so the final result is list of lists
@@ -490,7 +488,7 @@ view _ =
         ]
 ```
 
-The main change is that we're now using the `viewBox` function (so we modify the input to it). 
+The main change is that we're now using the `viewBox` function (so we modify the input to it).
 
 And the other thing is we added this bit:
 
@@ -502,9 +500,7 @@ which adds a month-year header.
 
 Our final result:
 
-
 ![month final](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iudzghx0x6ega1qhow9n.png)
-
 
 All that remains is to repeat this for each month in a given year.
 
@@ -538,11 +534,9 @@ view _ =
 
 This produces:
 
-
 ![full year but with bug](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/du72s76y34mnkyewcex1.png)
 
-
-Oh no! Here's a problem: the first month reads `January 2022`. 
+Oh no! Here's a problem: the first month reads `January 2022`.
 
 Turns out, the formatting string I was using is wrong:
 
@@ -557,5 +551,3 @@ And that fixes the problem:
 ![full year final](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cmitpkrnmhakbvag0pbg.png)
 
 The [full source code can be found here](https://github.com/chandru89new/elm-simple-calendar).
-
-

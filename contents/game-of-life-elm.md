@@ -3,6 +3,7 @@ title: "Cellular Automata in Elm: Build Conway's Game of Life"
 slug: conways-game-of-life-elm
 date: 2023-08-01
 ---
+
 Cellular automata is a fun topic and Conway's Game of Life is a very popular cellular automaton.
 
 In the previous Elm-specific post, I covered on [how to render a basic calendar](https://dev.to/druchan/how-to-render-a-basic-calendar-ui-in-elm-hih). In this one, let's write an application that implements Conway's Game of Life.
@@ -10,6 +11,7 @@ In the previous Elm-specific post, I covered on [how to render a basic calendar]
 ## Rules of the game
 
 Apparently there are many versions of [the "game"](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) but the basic rules are:
+
 - a "live" cell will live in the next generation if it has exactly 2 or 3 "live" neighbors
 - a "live" cell will die if it has less than 2 or more than 3 "live" neighbors
 - a "dead" cell will come alive if it has exactly 3 "live" neighbors
@@ -30,13 +32,13 @@ type alias Cell = { status : Status }
 type Status = Alive | Dead
 ```
 
-But of course, we'd also need to know **where that cell is located in the grid** because we'd need to that to compute the neighbors... 
+But of course, we'd also need to know **where that cell is located in the grid** because we'd need to that to compute the neighbors...
 
 ```elm
 type alias Cell = { status : Status, position : Position }
 type Status = Alive | Dead
 type alias Position = (RowId, ColumnId)
-type alias RowId = Int 
+type alias RowId = Int
 type alias ColumnId = Int
 ```
 
@@ -48,7 +50,7 @@ The grid is just a list of cells. So:
 type alias Grid = Array Cell
 ```
 
-Why `Array` instead of `List`? 
+Why `Array` instead of `List`?
 
 - Eventually, we'd need to work out the neighboring cells of a cell.
 - This involves filtering the cells.
@@ -66,6 +68,7 @@ To get a sample grid, I'm going to use a [random generator](https://package.elm-
 #### Generating a random Grid
 
 The logic is this:
+
 - start with a "random cell generator" – takes a rowId, a columnId and returns a cell generator where the `status` could be dead or alive (with a 40/60 odds).
 - use this generator to create a Grid generator that can generate a list of cells when called
 
@@ -73,20 +76,20 @@ First, the random cell generator:
 
 ```elm
 randomCellGenerator : RowId -> ColumnId -> Random.Generator Cell
-randomCellGenerator rowId columnId = 
+randomCellGenerator rowId columnId =
     let position = (rowId, columnId)
-    in 
-    Random.weighted (40, { position = position, status = Alive }) 
-        [ (60, { position = position, status = Dead }) ] 
+    in
+    Random.weighted (40, { position = position, status = Alive })
+        [ (60, { position = position, status = Dead }) ]
 ```
 
 Then, we use this in our Grid generator:
 
 ```elm
 randomGridGenerator : Int -> Random.Generator Grid
-randomGridGenerator size = 
+randomGridGenerator size =
 		-- create a List that starts with 1, and goes up to the size of the grid
-    List.range 1 ((size * size)) 
+    List.range 1 ((size * size))
     -- now map the list created above
     |> List.map
             (\cellId ->
@@ -116,10 +119,10 @@ randomGridGenerator size =
     -- the above step returns a `List (Generator Cell)` but we need `Generator (List Cell)` so we `sequence` it. For this we use the `Random.Extra` package
     |> Random.Extra.sequence
     -- and finally convert it into an Array.
-    |> Random.map (Array.fromList) 
+    |> Random.map (Array.fromList)
 ```
 
-The random generator `Generator Grid` is not useful on its own. 
+The random generator `Generator Grid` is not useful on its own.
 
 We need to run the generator (so it generates the Grid) and for that, we need a `Msg`.
 
@@ -132,10 +135,10 @@ type alias Model =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of 
-        UpdateGrid grid -> 
+    case msg of
+        UpdateGrid grid ->
             ({ model | grid = grid }, Cmd.none)
-            
+
 init : () -> ( Model, Cmd Msg )
 init _ =
     let
@@ -205,10 +208,7 @@ view model =
 
 If we [ran this application now](https://ellie-app.com/nwB38nKQtR3a1), we get something like this:
 
-
 ![grid render](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lv1ws311q2t16gh2zxx0.png)
-
-
 
 ## 2. Computing the "next" generation of the app
 
@@ -217,6 +217,7 @@ Conway's game of life proceeds by moving to the "next" generation. Each "step" i
 **Next generation basically means which cells survive and which die.**
 
 To compute this, we need two things:
+
 - who are the **neighbors**?
 - what are their **statuses**?
 - what are the rules for a cell to survive, die or revive depending on its neighbors?
@@ -227,8 +228,8 @@ Imagine a cell at the center...
 
 ![neighboring cells](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9mhheisl0qgwxzmanamq.png)
 
-
 The neighboring cells are:
+
 - top-left == rowId-1, columnId-1
 - top == rowId-1, columnId
 - top-right == rowId-1, columnId+1
@@ -238,7 +239,7 @@ The neighboring cells are:
 - bottom == rowId+1, columnId
 - bottom-right == rowId+1, columnId+1
 
-Sometimes, some of these neighbors may not exist. Example: top-left-most cell (ie, start of the grid) does not have a top-* or left neighbor. 
+Sometimes, some of these neighbors may not exist. Example: top-left-most cell (ie, start of the grid) does not have a top-\* or left neighbor.
 
 But that's okay.
 
@@ -301,7 +302,6 @@ getNeighboringCells cell grid =
         grid
 ```
 
-
 We can test this in a Debug statement:
 
 ```bash
@@ -313,6 +313,7 @@ Array.fromList [{ position = (1,2), status = Dead },{ position = (2,1), status =
 Now that we have the neighbors (and their status), we can compute if the cell will be alive, dead or revived from death.
 
 These are the rules:
+
 - a "live" cell will live in the next generation if it has exactly 2 or 3 "live" neighbors
 - a "live" cell will die if it has less than 2 or more than 3 "live" neighbors
 - a "dead" cell will come alive if it has exactly 3 "live" neighbors
@@ -344,13 +345,12 @@ newStatusOfCell cell grid =
                 cell
 ```
 
-
 It's worth adding a "Next" Msg to our app so it's easy to test the above function right away.
 
 ```elm
 type Msg
     = UpdateGrid Grid
-    | Next -- the new Msg 
+    | Next -- the new Msg
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -363,16 +363,14 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div [] 
+    div []
         [viewGrid model, div [] [ button [ onClick Next ] [text "Next Gen"] ] ]
 
 ```
 
 This renders a "Next Gen" button under the grid and clicking that advances the grid to the next generation. [You can fiddle around with the app at this stage here](https://ellie-app.com/nwBTFj64qZ5a1)
 
-
 ![grid with next button](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m962dw4hoymvgs5o3ptl.png)
-
 
 ## 3. Making the grid come alive
 
@@ -406,8 +404,7 @@ update msg model =
             )
 ```
 
-
-I'm using `Process.sleep` to mimic the behavior of Javascript's `setTimeout`. And then I use the `Task.perform` to *perform* some task – in this case, `(\_ -> Tick)`.
+I'm using `Process.sleep` to mimic the behavior of Javascript's `setTimeout`. And then I use the `Task.perform` to _perform_ some task – in this case, `(\_ -> Tick)`.
 
 To trigger this, we'll add a `Start` button:
 
@@ -423,9 +420,7 @@ view model =
         ]
 ```
 
-
 ![final render](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ynmlwn45cptad7xafi28.png)
-
 
 If you now click on the `Start` button, the grid starts changing every second, essentially moving to the next generation.
 
@@ -434,6 +429,7 @@ And the cells live/die or come alive depending on the rules.
 [Here's the final output you can play with](https://ellie-app.com/nwCyhPmDfFja1).
 
 You could try and add more features:
+
 - a "Pause" function.
 - a way to stop the game when either every cell dies or when it reaches an equilibrium.
 - configurable size of the grid.

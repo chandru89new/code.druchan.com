@@ -9,11 +9,9 @@ Read [part one here](/text-justify).
 
 In the first part, I had this problem to fix:
 
-> The trick is to find out how to go from a "number of spaces to distribute" to
-> a "special spaces array".
+> The trick is to find out how to go from a "number of spaces to distribute" to a "special spaces array".
 
-I worked through a few examples to get an intuitive feel of how the logic could
-look like:
+I worked through a few examples to get an intuitive feel of how the logic could look like:
 
 Suppose there are 7 spaces to distribute in 3 slots:
 
@@ -51,11 +49,9 @@ remainder distributed -> ["----","----","----","---"]
 
 This still did not give me a clear grasp of the distribution logic.
 
-Eventually, I came up with this idea: I could have a function that gradually
-"builds" the array of spaces from an empty array.
+Eventually, I came up with this idea: I could have a function that gradually "builds" the array of spaces from an empty array.
 
-It would do this by "remembering" and "updating" the number of extra/remainder
-spaces it has to distribute across the slots.
+It would do this by "remembering" and "updating" the number of extra/remainder spaces it has to distribute across the slots.
 
 So, something like this:
 
@@ -116,8 +112,7 @@ incCount => the remainders to be distributed
 timesCount => number of slots to be filled
 ```
 
-I've used a bunch of helper functions in the above code like `deficit`,
-`numberOfSpaces` and some library functions like [`catMaybes`][catmaybes].
+I've used a bunch of helper functions in the above code like `deficit`, `numberOfSpaces` and some library functions like [`catMaybes`][catmaybes].
 
 Here's definitions for the helpers:
 
@@ -150,11 +145,9 @@ Testing all of this:
 ["----","----","---","---"]
 ```
 
-All we need now is a way to mix an array of strings (from the `ValidLine`) and
-this spaces array such that the words and spaces are interleaved.
+All we need now is a way to mix an array of strings (from the `ValidLine`) and this spaces array such that the words and spaces are interleaved.
 
-I checked Purescript's Array package and found a `transpose` function that fit
-the need perfectly:
+I checked Purescript's Array package and found a `transpose` function that fit the need perfectly:
 
 ```haskell
 transpose :: forall a. Array (Array a) -> Array (Array a)
@@ -186,8 +179,7 @@ transpose
 
 ```
 
-So I could just put the array of valid lines and array of space slots into
-another array and then `transpose` them.
+So I could just put the array of valid lines and array of space slots into another array and then `transpose` them.
 
 ```haskell
 import Data.Array (transpose, concat)

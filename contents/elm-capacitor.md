@@ -3,6 +3,7 @@ title: "Building mobile apps using Elm and Capacitor"
 date: 2023-08-15
 slug: elm-capacitor
 ---
+
 Native mobile app dev is still largely object-oriented driven (Kotlin, Java etc). Languages like Kotlin now have a lot of functional programming paradigms supported out of the box (e.g. Arrow).
 
 About two years ago, I wanted to see if [Elm](https://elm-lang.com) can be used to build a meaningful Android app.
@@ -20,7 +21,7 @@ But if you're interested in setting up an Elm-based Android app project yourself
 
 #### 1. Core dependencies
 
-For this project, I use CapacitorJS. **This means the whole application runs inside a web-view.** 
+For this project, I use CapacitorJS. **This means the whole application runs inside a web-view.**
 
 Things have improved quite a bit in the web-view (and mobile browser engine) space in the recent years so building apps that run on web-views is not really a bad thing now.
 
@@ -31,6 +32,7 @@ Custom JS glue-code has to be written to make your Elm app interact with native 
 #### 2. Bundling logic – How is the project built?
 
 If we were building an Elm app, this is broadly the workflow:
+
 - write Elm code
 - compile Elm to JS
 - include the compiled JS in an `index.html` file and init the Elm app via `Elm.Main.init()`
@@ -76,7 +78,7 @@ The build step does these things:
 
 #### 3. Caveats and explorations
 
-One of the things I realized while building the personal expense tracking app was that Elm routing doesn't work. So I had to resort to using `Browser.element` and using a custom `Page` type as part of the `Model`. 
+One of the things I realized while building the personal expense tracking app was that Elm routing doesn't work. So I had to resort to using `Browser.element` and using a custom `Page` type as part of the `Model`.
 
 Elm ports _can_ feel a little tedious to hook up with the Capacitor bridge. However, with some good [abstractions](https://github.com/chandru89new/harbor), using ports can be more streamlined.
 

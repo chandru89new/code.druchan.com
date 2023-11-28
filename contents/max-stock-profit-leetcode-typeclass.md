@@ -5,8 +5,7 @@ slug: max-stock-profit-leetcode-typeclass
 # ignore: true
 ---
 
-[In the last note posted](/max-stock-profit-leetcode), we "implicitly" defined
-some valid trades.
+[In the last note posted](/max-stock-profit-leetcode), we "implicitly" defined some valid trades.
 
 Two data structures specifically had this notion associated with them:
 
@@ -31,15 +30,11 @@ c = Tuple _ 8
 d = Tuple _ 4
 ```
 
-In this, `a` followed by `b` can be a valid trade because the "day" order makes
-sense. (That is `a` is on 1st day and `b` is on 6th day - buy on 1st and sell on
-6th).
+In this, `a` followed by `b` can be a valid trade because the "day" order makes sense. (That is `a` is on 1st day and `b` is on 6th day - buy on 1st and sell on 6th).
 
-But `c` followed by `d` (and `b` followed by `d`) are not valid because the day
-orders are reversed.
+But `c` followed by `d` (and `b` followed by `d`) are not valid because the day orders are reversed.
 
-This notion comes into the picture when we "pair" these to make a `BuySell`
-combination.
+This notion comes into the picture when we "pair" these to make a `BuySell` combination.
 
 We expressed this as a `Maybe`:
 
@@ -61,20 +56,13 @@ isValidTradeDayOrder (BuySell (Tuple _ a) (Tuple _ b)) (BuySell (Tuple _ c) (Tup
   (a < b && c < d && c > b) || (c < d && a < b && d < a)
 ```
 
-Here, we're trying to confirm if two buy-sell pairs are actually valid by making
-sure the dates/days align. (Remember that _within_ a `BuySell` pair, the
-`StockDay`s are valid thanks to our `makeBuySell` function. Essentially, a
-`BuySell` represents valid, profitable buy-and-sell operation).
+Here, we're trying to confirm if two buy-sell pairs are actually valid by making sure the dates/days align. (Remember that _within_ a `BuySell` pair, the `StockDay`s are valid thanks to our `makeBuySell` function. Essentially, a `BuySell` represents valid, profitable buy-and-sell operation).
 
-Again, though, in the case of a `isValidTradeDayOrder`, we're dealing with this
-idea of "valid trade".
+Again, though, in the case of a `isValidTradeDayOrder`, we're dealing with this idea of "valid trade".
 
-I decided (or rather, wanted to experiment) if this general idea of a "valid
-trade" can be encoded into the code as a general function.
+I decided (or rather, wanted to experiment) if this general idea of a "valid trade" can be encoded into the code as a general function.
 
-Purescript, like Haskell, allows you to define your own
-[typeclasses](https://book.purescript.org/chapter6.html) and then define
-instances for your data types.
+Purescript, like Haskell, allows you to define your own [typeclasses](https://book.purescript.org/chapter6.html) and then define instances for your data types.
 
 So, here's a generic `ValidTrade` class:
 
@@ -83,11 +71,9 @@ class ValidTrade a where
   validTrade :: a -> a -> Boolean
 ```
 
-Any datatype using the `ValidTrade` class must simply describe a `validTrade`
-function.
+Any datatype using the `ValidTrade` class must simply describe a `validTrade` function.
 
-And so, here are the definitions for both the `StockDay` and `BuySell` data
-types:
+And so, here are the definitions for both the `StockDay` and `BuySell` data types:
 
 ```haskell
 instance ValidTrade BuySell where
@@ -104,8 +90,7 @@ I also added an `infix` to help make the code a little succinct:
 infix 1 validTrade as ??
 ```
 
-Now, I could get rid of the `isValidTradeDayOrder` function in totality and
-replace some instances with `??`:
+Now, I could get rid of the `isValidTradeDayOrder` function in totality and replace some instances with `??`:
 
 ```haskell
 makeBuySell :: StockDay -> StockDay -> Maybe BuySell

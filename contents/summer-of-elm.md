@@ -4,73 +4,16 @@ date: 2023-05-15
 slug: summer-of-elm
 ---
 
-It's very likely that I'll come off as an [Elm](https://elm-lang.org)-fanboy in
-these notes. I don't think of myself as one for I've seen some of the
-limitations of this beautiful language, but I have to confess I do become quite
-enamoured when writing about (or writing in) the language.
+It's very likely that I'll come off as an [Elm](https://elm-lang.org)-fanboy in these notes. I don't think of myself as one for I've seen some of the limitations of this beautiful language, but I have to confess I do become quite enamoured when writing about (or writing in) the language.
 
-After a few-months-long hiatus, I seem to have suddenly landed on a purple patch
-of writing a lot of Elm. It began as a self-imposed feature request on an old
-project I had done where you could
-[visually see a calendar of potential long-weekends](https://lwc-druchan.vercel.app/).
-I realize I sound vain but I seem to have surprised myself in being able to
-stick to doing things this long and in such quantities. All tallied, I modified
-2 old projects written in Elm
-([one of which is my go-to expense tracker](https://github.com/chandru89new/xpns)
-that I use almost everyday), created
-[a tool](https://github.com/chandru89new/es-imports-parser) that helps me in my
-daily work, published
-[my first Elm package](https://package.elm-lang.org/packages/chandru89new/elm-simple-cli-options-parser/latest/),
-and managed to wire up
-[something that can serve as a pattern library](https://github.com/chandru89new/harbor)
-to interact type-safely with
-[Elm's Ports](https://guide.elm-lang.org/interop/ports.html) (something that's
-currently not easily done).
+After a few-months-long hiatus, I seem to have suddenly landed on a purple patch of writing a lot of Elm. It began as a self-imposed feature request on an old project I had done where you could [visually see a calendar of potential long-weekends](https://lwc-druchan.vercel.app/). I realize I sound vain but I seem to have surprised myself in being able to stick to doing things this long and in such quantities. All tallied, I modified 2 old projects written in Elm ([one of which is my go-to expense tracker](https://github.com/chandru89new/xpns) that I use almost everyday), created [a tool](https://github.com/chandru89new/es-imports-parser) that helps me in my daily work, published [my first Elm package](https://package.elm-lang.org/packages/chandru89new/elm-simple-cli-options-parser/latest/), and managed to wire up [something that can serve as a pattern library](https://github.com/chandru89new/harbor) to interact type-safely with [Elm's Ports](https://guide.elm-lang.org/interop/ports.html) (something that's currently not easily done).
 
-My foray into this strange world of "functional programming" really began
-in 2018. I suspect the actual history is permanently lost in my neural pathways
-but I remember the dichotomy of having been singed by Javascript frameworks (Vue
-was, at the time, my favorite and also the one I had the most experience with)
-prompting me to seek alternatives (leading to the beautiful little website of
-Elm Lang) and the impregnable-esque feeling one finds oneself in when staring at
-`Maybes` and `Results` and `Json Decoders`.
+My foray into this strange world of "functional programming" really began in 2018. I suspect the actual history is permanently lost in my neural pathways but I remember the dichotomy of having been singed by Javascript frameworks (Vue was, at the time, my favorite and also the one I had the most experience with) prompting me to seek alternatives (leading to the beautiful little website of Elm Lang) and the impregnable-esque feeling one finds oneself in when staring at `Maybes` and `Results` and `Json Decoders`.
 
-It's only recently that I've realized how lucky it is that I discovered Elm not
-at the time of its initial release but a few years later, because by 2018, Elm
-had undergone a sort of a major overhaul in terms of the entire structure,
-philosophy and architecture. It would undergo one more transformation a little
-later (with v0.19) but honestly, since none of the work I do involves Elm at
-large-scale production, that drama did not affect me. Anyway: having seen a good
-chunk of code written in pre-2018-style Elm, I can safely say I'd have easily
-given this language a miss if I had to deal with that for runtime safety
-guarantees.
+It's only recently that I've realized how lucky it is that I discovered Elm not at the time of its initial release but a few years later, because by 2018, Elm had undergone a sort of a major overhaul in terms of the entire structure, philosophy and architecture. It would undergo one more transformation a little later (with v0.19) but honestly, since none of the work I do involves Elm at large-scale production, that drama did not affect me. Anyway: having seen a good chunk of code written in pre-2018-style Elm, I can safely say I'd have easily given this language a miss if I had to deal with that for runtime safety guarantees.
 
-My abortive attempts at learning Elm at the time were a chagrin. I was
-frustrated that I couldnt quite "intuit" the idioms of the language and yet I
-wanted to learn this language because I was thoroughly convinced – because of my
-interactions with libraries like RamdaJS – that this functional-style of writing
-code was a lot better than anything I had done (or was doing at work).
+My abortive attempts at learning Elm at the time were a chagrin. I was frustrated that I couldnt quite "intuit" the idioms of the language and yet I wanted to learn this language because I was thoroughly convinced – because of my interactions with libraries like RamdaJS – that this functional-style of writing code was a lot better than anything I had done (or was doing at work).
 
-Late 2019, however, something happened: I had to model a customized
-[Highcharts](https://www.highcharts.com) implementation (think massive,
-highly-user-customizable wrappers around that charting library), and this
-would've been extremely complex. What saved the day was that I wrote all of the
-first-pass code in pseudo-Elm (ie, Elm-like syntax, but code that wont really
-run). But even the pseudo-code suddenly made it extremely easy to write
-"composable" chunks of manageable, grokkable code that led directly to the
-larger model. Transfering all of that into Vue / JS was a breeze (although just
-tedious because so many functions!). I was completely "sold" at this point to
-the notion that Elm would make me enjoy programming far more than I had ever did
-so far (and I was already enjoying writing programs).
+Late 2019, however, something happened: I had to model a customized [Highcharts](https://www.highcharts.com) implementation (think massive, highly-user-customizable wrappers around that charting library), and this would've been extremely complex. What saved the day was that I wrote all of the first-pass code in pseudo-Elm (ie, Elm-like syntax, but code that wont really run). But even the pseudo-code suddenly made it extremely easy to write "composable" chunks of manageable, grokkable code that led directly to the larger model. Transfering all of that into Vue / JS was a breeze (although just tedious because so many functions!). I was completely "sold" at this point to the notion that Elm would make me enjoy programming far more than I had ever did so far (and I was already enjoying writing programs).
 
-Cut to 2023: It's a pity that I have not put in enough time/effort in looking
-for external projects where I could work with Elm completely, but I find this
-language to be a refuge nevertheless. My forays into Purescript (and a bit of
-Haskell) has made me realize that there's a lot more to the iceberg than meets
-the eye (and Elm really is sort of a tip-of-the-iceberg thing in the functional
-world – all of it by choice because it aims to be a frontend language right now
-and wants to make the transition from unsafe JS to safe functional-style
-programming as easy as possible). For instance, pun intended, `Type classes` and
-`instance`s are very much missing from Elm (for good reasons) and they are quite
-powerful tools when programming applications. Despite these, Elm continues to be
-quite a powerful toolkit to build complex stuff.
+Cut to 2023: It's a pity that I have not put in enough time/effort in looking for external projects where I could work with Elm completely, but I find this language to be a refuge nevertheless. My forays into Purescript (and a bit of Haskell) has made me realize that there's a lot more to the iceberg than meets the eye (and Elm really is sort of a tip-of-the-iceberg thing in the functional world – all of it by choice because it aims to be a frontend language right now and wants to make the transition from unsafe JS to safe functional-style programming as easy as possible). For instance, pun intended, `Type classes` and `instance`s are very much missing from Elm (for good reasons) and they are quite powerful tools when programming applications. Despite these, Elm continues to be quite a powerful toolkit to build complex stuff.

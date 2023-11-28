@@ -3,6 +3,7 @@ title: "To scale productivity in code"
 date: 2020-12-12
 slug: to-scale-productivity-in-code
 ---
+
 A startup founder - let’s call him Nate - I worked with had this interesting philosophy of optimization where “automation” was a key to doing things efficiently. While PG wrote “do things that don’t scale”, Nate swung in the other direction – he would pick a thing almost only if it was scalable. And “can it be automated?” was one of the important yardsticks to see if something was scalable and, therefore, worth his time.
 
 I think somewhere this notion is prevalent in many people. A co-founder from another startup - let’s call him Abe - exhibited this in a different way. While Nate’s automation yardstick was applied to everything in the business world (which is to say it encompassed everything from marketing to sales to engineering), Abe’s was more pronounced in the engineering department. Perhaps this is because he was more of an engineer than an overall-product person in the scope/context I knew him.

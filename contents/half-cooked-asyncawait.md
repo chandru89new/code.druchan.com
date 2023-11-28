@@ -6,7 +6,7 @@ slug: half-cooked-asyncawait
 
 **Update (2019)**: I've changed my mind about this and prefer `async/await` over the callback-hell.
 
---- 
+---
 
 I wrote [a library that generates unique IDs](http://druchan.com/gen_id) of any reasonable character length.
 
@@ -38,11 +38,11 @@ Typically, I’d use a simple `generateID(options).then().catch()` kind of a cod
 
 When you click “Generate ID”:
 
-I do this:  
+I do this:
 
 ![](https://64.media.tumblr.com/bb99b5adf8ba6a66295c3d95d4352d30/tumblr_inline_p7q6j3VMJf1qbg0pd_540.png)
 
-But `await` cannot be used like that. It *has* to be inside an `async` function. Er… that seems stupid.
+But `await` cannot be used like that. It _has_ to be inside an `async` function. Er… that seems stupid.
 
 So we have to rewrite it.
 
