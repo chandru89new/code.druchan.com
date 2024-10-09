@@ -80,7 +80,7 @@ ol {
 }
 
 ul {
-  @apply list-disc;
+  @apply list-disc ml-4;
 }
 
 /* disable list-disc for home page list */
