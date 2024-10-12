@@ -79,7 +79,7 @@ ol {
   @apply list-decimal;
 }
 
-ul {
+article:not(#archive_container) ul {
   @apply list-disc ml-4;
 }
 
