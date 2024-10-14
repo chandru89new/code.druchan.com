@@ -1,0 +1,13 @@
+---
+title: Haskell Journal - Day 9
+date: 2024-10-15
+slug: haskell-journal-day-9
+---
+
+- Finally managed to add some variant of a "daily digest" system today.
+- Took a while to think of a bare minimum implementation of the digest logic. The table captures _when_ a feed item/post was added (basically, when you run a `refresh`, it gets all the posts from all the RSS feeds you've added and adds the posts—those that aren't already in the DB—along with the current date, which is different from the published/updated date). This gives me a way to prepare a daily digest for any given day: I just have to pick the items for that day.
+- The pros in this logic are that I can prepare a digest for any day, and it's kind of simple (maybe too simple). It's also idempotent unless you do a refresh on the same day and there are new feeds added. The cons, of course, are many: there's no way to mark an item as read, so what you have is a growing list of posts as you read them—but I'm okay with this implementation for now. As I work through and use the system, I'll find more ideas to refine or pivot.
+- I think I was at that familiar stage of any side-project where I was doing a lot of side-quests instead of writing the main piece: the "daily digest" logic. Added other niceties: confirmation steps for removals, a purge/nuke option, and more critically, modified the schema so that feed items/posts are foreign-key linked to the feed in the feeds table. So, if I delete a feed, all the posts associated with it are also removed by SQLite, thanks to the constraint.
+- Haskell lint offered a lot of interesting suggestions to make the code more concise. I found that in a few places, I had to suppress or ignore the suggestions to keep the code readable for future-me.
+- There was also a point where I was trying to reinvent `>>=` by doing `join . fmap`, but chatGPT reminded me that I could simply use `>>=` instead. That made the code concise. I was thinking if I'd end up not understanding this code in the future but decided to keep it. It also got me thinking about [this discussion](https://mail.haskell.org/pipermail/haskell-cafe/2009-March/058475.html) that I stumbled upon recently (one person argues Haskell style guides should recommend more simple/readable code, while another argues it's up to the developers to learn to read terse code).
+- The digest I produce is an HTML file with some styling. I generate this HTML file by using a template and then just swapping/replacing some parts of the template with relevant data. I learned how to bundle the template as part of the binary by inlining/embedding it using the `file-embed` package—all of this thanks to chatGPT.
