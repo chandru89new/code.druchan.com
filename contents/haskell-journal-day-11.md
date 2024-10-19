@@ -2,7 +2,6 @@
 title: Haskell Journal - Day 11
 date: 2024-10-17
 slug: haskell-journal-day-11
-ignore: true
 ---
 
 - Made significant improvements to the tool. Now able to refresh a single feed and build a digest for a date range. The digest selects items with `published` dates (`updated` in the database) within the specified range. Added a command to create a digest for today.
