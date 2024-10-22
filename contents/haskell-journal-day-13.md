@@ -4,8 +4,6 @@ date: 2024-10-21
 slug: haskell-journal-day-13
 ---
 
-Here's the cleaned up text while preserving all information:
-
 - Added an important update: rdigest requires you to specify where to store the db and digest files via environment variable. This was surprisingly easy to implement.
 
 - Attempted to add subreddit RSS, which proved very temperamental. It works sometimes, but often no feed comes through because Reddit aggressively blocks direct access by tools/scrapers. Went on a troubleshooting journey trying to solve this by using alternative libraries like wreq, but these didn't help. All these "simpler" libraries were actually much harder to get started with and use. While this arguably makes them more typesafe, they are poor for rapid prototyping. The examples in their documentation are also inadequate. Returned to the original library (Network.HTTP.Simple) and added a user-agent header, which occasionally fixes the Reddit RSS issue.
