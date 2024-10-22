@@ -1,6 +1,6 @@
 ---
 title: Haskell Journal - Day 12
-date: "2024-10-19T20:00:00Z"
+date: 2024-10-18
 slug: haskell-journal-day-12
 ---
 
