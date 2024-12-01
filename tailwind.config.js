@@ -5,11 +5,12 @@ export default {
     extend: {
       fontFamily: {
         sora: ["Sora", "sans-serif"],
+        fraunces: ["Fraunces", "serif"]
       },
       fontSize: {
-        xxs: "0.5rem",
-      },
-    },
+        xxs: "0.5rem"
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

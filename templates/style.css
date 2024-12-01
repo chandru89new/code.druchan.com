@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,600;1,400;1,600&family=Prata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,600;1,400;1,600&family=Prata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css");
-
 
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
 
 html {
-  @apply text-[16px] md:text-[20px]
+  @apply text-[16px] md:text-[20px];
 }
 
 body {
-  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Fraunces", "Atkinson Hyperlegible", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
   @apply bg-slate-50 text-slate-800 p-10 max-w-[700px] leading-relaxed dark:bg-slate-700 dark:text-slate-200;
 }
 
@@ -20,45 +23,46 @@ a {
 }
 
 ul {
-  @apply space-y-2 sm:space-y-1
+  @apply space-y-2 sm:space-y-1;
 }
 
 h1 {
-  @apply font-semibold tracking-tight text-3xl mb-3
+  @apply font-semibold tracking-tight text-3xl mb-3;
 }
 
-#logo, #logo a {
+#logo,
+#logo a {
   @apply text-slate-400;
-  font-family: "Sora", sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 #home-page-logo a {
   @apply block font-semibold tracking-tight text-3xl mb-6 pb-6 border-b;
-  font-family: "Sora", sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 article {
-  @apply space-y-6
+  @apply space-y-6;
 }
 
 #date {
-  @apply text-sm text-slate-500
+  @apply text-sm text-slate-500;
 }
 
 header {
-  @apply mt-3 mb-4 pb-4 border-b
+  @apply mt-3 mb-4 pb-4 border-b;
 }
 
 footer {
-  @apply text-sm sm:text-base pt-4 mt-4 mb-10 border-t flex gap-x-3
+  @apply text-sm sm:text-base pt-4 mt-4 mb-10 border-t flex gap-x-3;
 }
 
 section h3 {
-  @apply font-sora font-semibold mb-1 uppercase text-xs text-slate-400
+  @apply font-fraunces font-semibold mb-1 uppercase text-xs text-slate-400;
 }
 
 .date {
-  @apply text-slate-400 text-xs font-sora;
+  @apply text-slate-400 text-xs font-fraunces;
 }
 
 /* code, pre {
@@ -66,7 +70,8 @@ section h3 {
   @apply text-xs;
 } */
 
-code, li code {
+code,
+li code {
   @apply font-mono text-xs px-1 py-1 bg-slate-200 dark:bg-slate-800 leading-5 rounded;
 }
 
@@ -83,7 +88,7 @@ article:not(#archive_container) ul {
 }
 
 /* disable list-disc for home page list */
-article section ul { 
+article section ul {
   @apply list-none;
 }
 
@@ -96,6 +101,5 @@ article#archive_container ul li {
 }
 
 blockquote {
-  @apply border-l-4 border-slate-200 pl-4 space-y-4 text-slate-500
+  @apply border-l-4 border-slate-200 pl-4 space-y-4 text-slate-500;
 }
-
