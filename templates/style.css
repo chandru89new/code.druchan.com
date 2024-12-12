@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,600;1,400;1,600&family=Prata&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,50;1,9..144,100..900,50&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css");
 
 @tailwind base;
@@ -8,6 +8,15 @@
 
 html {
   @apply text-[16px] md:text-[20px];
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold;
 }
 
 body {
