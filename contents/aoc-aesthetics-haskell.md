@@ -29,6 +29,10 @@ Except, during some of these AoC puzzles, the computation does take a while and 
 
 I compiled the program to test some other mechanism I was building into my code unrelated to some long-running puzzles, and then I ran the binary, running the puzzle inadvertently. Suddenly, the ~120s function ran in a fraction of that time! Crap. I could've saved a lot of anxiety by just building the binary (which takes <5s) and running the solutions!
 
+### Resisting the urge to be (point-)free
+
+Several times in a coding session, there's this opportunity to [reduce an expression](https://wiki.haskell.org/Eta_conversion), often to the extent of [point-free](https://wiki.haskell.org/index.php?title=Pointfree). It is tempting. But I imagine myself reading this code a few weeks down the line and I can vividly picture a completely confused brain that struggles to comprehend what it wrote. That keeps the terseness-shenanigans at bay. However, it would be cool to have a branch where the code is as terse as can be.
+
 \*
 
 Anyway, it is almost always a delight to be able to solve some puzzles by writing some code. Amidst some stressful work caretaking for a recovering parent from their surgery, I look forward to these moments when I get to think about these AoC puzzles.
